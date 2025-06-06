@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend-mvc\\CoursFeedback.MVC.csproj",
-      "projectName": "CoursFeedback.MVC",
-      "projectPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend-mvc\\CoursFeedback.MVC.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj",
+      "projectName": "frontend",
+      "projectPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend-mvc\\obj\\",
+      "outputPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
