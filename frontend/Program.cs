@@ -22,5 +22,5 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
-
+app.MapRazorPages(); // Active Razor Pages dans l’application
 app.Run();

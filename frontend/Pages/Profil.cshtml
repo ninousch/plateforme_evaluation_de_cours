@@ -1,0 +1,32 @@
+@page
+@model dynamic
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Mon Profil</h2>
+<div id="profil-container">Chargement...</div>
+
+<script>
+    async function chargerProfil() {
+        const token = localStorage.getItem("token");
+        if (!token) return window.location.href = "/Login";
+
+        const res = await fetch("https://votre-api.com/api/user/profile", {
+            headers: { "Authorization": "Bearer " + token }
+        });
+
+        if (!res.ok) return document.getElementById("profil-container").innerText = "Erreur.";
+
+        const user = await res.json();
+        document.getElementById("profil-container").innerHTML = `
+            <ul>
+                <li>Email: ${user.email}</li>
+                <li>Nom d'utilisateur: ${user.username}</li>
+                <li>Rôle: ${user.role}</li>
+            </ul>
+        `;
+    }
+    chargerProfil();
+</script>
