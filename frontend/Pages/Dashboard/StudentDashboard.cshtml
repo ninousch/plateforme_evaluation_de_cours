@@ -1,0 +1,270 @@
+@page
+@model frontend.Pages.Dashboard.StudentDashboardModel
+@{
+    ViewData["Title"] = "Dashboard Étudiant - Évaluation des cours";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Bienvenue sur votre espace étudiant</h2>
+
+    <!-- Onglets de navigation -->
+    <ul class="nav nav-tabs mb-4" id="roleTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="evaluation-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="true" aria-controls="evaluation" onclick="showSection('evaluation', this)">📋 Évaluer un cours</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="stats-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" aria-controls="stats" onclick="showSection('stats', this)">📊 Statistiques</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="history-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" aria-controls="history" onclick="showSection('history', this)">🗂️ Mes évaluations</button>
+        </li>
+    </ul>
+
+    <!-- Section d’évaluation -->
+    <div id="evaluation" class="card p-4 shadow-sm" role="tabpanel" aria-labelledby="evaluation-tab">
+        <h4 class="mb-3">Formulaire d’évaluation</h4>
+        <form id="evaluationForm" onsubmit="return submitEvaluation()">
+            <div class="mb-3">
+                <label for="courseName" class="form-label">Nom du cours <span class="text-danger">*</span></label>
+                <select id="courseName" class="form-select" required>
+                    <option value="">-- Choisissez un cours --</option>
+                    <option value="Programmation Web avec ASP.NET">Programmation Web avec ASP.NET</option>
+                    <option value="Initiation à la Programmation Mobile Android & IOS">Initiation à la Programmation Mobile Android & IOS</option>
+                    <option value="Projet Tutoré">Projet Tutoré</option>
+                    <option value="Technique de Rédaction de Rapport de Stage">Technique de Rédaction de Rapport de Stage</option>
+                    <option value="Programmation Web avec J2EE">Programmation Web avec J2EE</option>
+                </select>
+                <div id="courseNameError" class="text-danger d-none mt-1">Veuillez choisir un cours.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="teacherName" class="form-label">Nom de l'enseignant <span class="text-danger">*</span></label>
+                <select id="teacherName" class="form-select" required>
+                    <option value="">-- Choisissez un enseignant --</option>
+                    <option value="M. DOLA">M. DOLA</option>
+                    <option value="M. OBANDJE">M. OBANDJE</option>
+                    <option value="M. DEKU">M. DEKU</option>
+                    <option value="M. N'SOUGAN">M. N'SOUGAN</option>
+                    <option value="M. AKOH">M. AKOH</option>
+                </select>
+                <div id="teacherNameError" class="text-danger d-none mt-1">Veuillez choisir un enseignant.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">Note <span class="text-danger">*</span></label>
+                <select id="rating" class="form-select" required>
+                    <option value="">Choisissez une note</option>
+                    <option value="1">1 - Très mauvais</option>
+                    <option value="2">2 - Mauvais</option>
+                    <option value="3">3 - Moyen</option>
+                    <option value="4">4 - Bon</option>
+                    <option value="5">5 - Excellent</option>
+                </select>
+                <div id="ratingError" class="text-danger d-none mt-1">Veuillez choisir une note.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="comment" class="form-label">Commentaire (optionnel, max 300 caractères)</label>
+                <textarea id="comment" class="form-control" maxlength="300"></textarea>
+                <small class="form-text text-muted">300 caractères maximum.</small>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100" id="submitBtn">
+                <span id="btnText">Soumettre</span>
+                <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+            </button>
+        </form>
+
+        <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+            🎉 Votre évaluation a bien été enregistrée ! Vous allez être redirigé vers les statistiques...
+        </div>
+    </div>
+
+    <!-- Section Statistiques -->
+    <div id="stats" class="d-none" role="tabpanel" aria-labelledby="stats-tab">
+        <div class="card p-4 shadow-sm">
+            <h4 class="mb-3">Statistiques des évaluations</h4>
+            <canvas id="statsChart" width="400" height="300"></canvas>
+        </div>
+    </div>
+
+    <!-- Section Historique -->
+    <div id="history" class="d-none" role="tabpanel" aria-labelledby="history-tab">
+        <div class="card p-4 shadow-sm">
+            <h4 class="mb-3">🗂️ Historique de mes évaluations</h4>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Cours</th>
+                        <th>Enseignant</th>
+                        <th>Note</th>
+                        <th>Commentaire</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const currentStudentId = "student123";
+
+        function showSection(section, button) {
+            ['evaluation', 'stats', 'history'].forEach(id => {
+                document.getElementById(id).classList.add('d-none');
+            });
+            document.getElementById(section).classList.remove('d-none');
+
+            // Mise à jour des classes active et aria-selected des onglets
+            const tabs = document.querySelectorAll('#roleTabs button.nav-link');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            if(button){
+                button.classList.add('active');
+                button.setAttribute('aria-selected', 'true');
+            }
+
+            if (section === 'stats') renderChart();
+            if (section === 'history') renderHistory();
+        }
+
+        function clearErrors() {
+            ['courseNameError', 'teacherNameError', 'ratingError'].forEach(id => {
+                document.getElementById(id).classList.add('d-none');
+            });
+        }
+
+        function submitEvaluation() {
+            clearErrors();
+
+            const courseName = document.getElementById('courseName').value.trim();
+            const teacherName = document.getElementById('teacherName').value.trim();
+            const rating = document.getElementById('rating').value;
+            const comment = document.getElementById('comment').value.trim();
+
+            let valid = true;
+            if (!courseName) {
+                document.getElementById('courseNameError').classList.remove('d-none');
+                valid = false;
+            }
+            if (!teacherName) {
+                document.getElementById('teacherNameError').classList.remove('d-none');
+                valid = false;
+            }
+            if (!rating) {
+                document.getElementById('ratingError').classList.remove('d-none');
+                valid = false;
+            }
+            if (!valid) return false;
+
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('btnText').classList.add('d-none');
+            document.getElementById('btnSpinner').classList.remove('d-none');
+
+            const evaluation = { studentId: currentStudentId, courseName, teacherName, rating, comment };
+            const all = JSON.parse(localStorage.getItem("evaluations") || "[]");
+            all.push(evaluation);
+            localStorage.setItem("evaluations", JSON.stringify(all));
+
+            setTimeout(() => {
+                document.getElementById('evaluationForm').reset();
+                document.getElementById('successMessage').classList.remove('d-none');
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('btnText').classList.remove('d-none');
+                document.getElementById('btnSpinner').classList.add('d-none');
+
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('d-none');
+                    // Affiche la section Statistiques et active l'onglet correspondant
+                    const statsTab = document.getElementById('stats-tab');
+                    showSection('stats', statsTab);
+                }, 2000);
+            }, 1500);
+
+            return false;
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('statsChart').getContext('2d');
+            if (window.myChart) window.myChart.destroy();
+
+            const evaluations = JSON.parse(localStorage.getItem("evaluations") || "[]");
+            const data = {};
+
+            evaluations.forEach(e => {
+                if (!data[e.courseName]) data[e.courseName] = [];
+                data[e.courseName].push(Number(e.rating));
+            });
+
+            const labels = Object.keys(data);
+            const averages = labels.map(label => {
+                const notes = data[label];
+                return notes.reduce((a, b) => a + b, 0) / notes.length;
+            });
+
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: 'Note moyenne',
+                        data: averages,
+                        backgroundColor: '#28a745'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 5 }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function renderHistory() {
+            const tbody = document.getElementById('historyTableBody');
+            tbody.innerHTML = "";
+            const evaluations = JSON.parse(localStorage.getItem("evaluations") || "[]");
+            const myEvaluations = evaluations
+                .map((e, i) => ({ ...e, index: i }))
+                .filter(e => e.studentId === currentStudentId);
+
+            myEvaluations.forEach(e => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${e.courseName}</td>
+                    <td>${e.teacherName}</td>
+                    <td>${e.rating}</td>
+                    <td>${e.comment ? e.comment : "-"}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="deleteEvaluation(${e.index})" aria-label="Supprimer cette évaluation">🗑️ Supprimer</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            if(myEvaluations.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center">Aucune évaluation trouvée.</td></tr>`;
+            }
+        }
+
+        function deleteEvaluation(index) {
+            if (!confirm("Voulez-vous vraiment supprimer cette évaluation ?")) return;
+            const all = JSON.parse(localStorage.getItem("evaluations") || "[]");
+            all.splice(index, 1);
+            localStorage.setItem("evaluations", JSON.stringify(all));
+            renderHistory();
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('evaluation', document.getElementById('evaluation-tab'));
+        });
+    </script>
+}
