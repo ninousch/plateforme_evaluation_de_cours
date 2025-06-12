@@ -1,26 +1,26 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Juste Razor Pages, session (si besoin), et HttpContextAccessor (optionnel)
 builder.Services.AddRazorPages();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession(); // seulement si tu utilises la session
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseSession();        // si tu utilises session
+// Pas besoin d'UseAuthentication() ni UseAuthorization() ici
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
-app.MapRazorPages(); // Active Razor Pages dans l’application
+app.MapRazorPages();
+
 app.Run();

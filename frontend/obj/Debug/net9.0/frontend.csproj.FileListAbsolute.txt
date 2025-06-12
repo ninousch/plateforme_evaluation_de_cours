@@ -97,5 +97,15 @@ C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\
 C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\frontend.genruntimeconfig.cache
 C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\ref\frontend.dll
 C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\compressed\cw8e5dd681-m8d03v40zu.gz
-C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\compressed\c3z3hnc0z1-bjqfieuc4b.gz
 C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\frontend.csproj.AssemblyReference.cache
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
+C:\Users\USER\OneDrive - ESGIS\Documents\Groupe3\plateforme_evaluation_de_cours\frontend\obj\Debug\net9.0\frontend.csproj.Up2Date
