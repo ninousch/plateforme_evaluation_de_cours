@@ -1,9 +1,10 @@
-using CourseFeedbackAPI.Data;
-using CourseFeedbackAPI.Models;
-using CourseFeedbackAPI.Services;
+using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using CoursFeedback.API.Data;
+using CoursFeedback.API.Models;
+using CoursFeedback.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -32,7 +33,7 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
     };
 });
 
