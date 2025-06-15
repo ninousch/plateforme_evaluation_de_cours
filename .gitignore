@@ -1,7 +1,7 @@
-# ignore les dossiers de build de l'API
+# ignore les artefacts de build de l'API
 /backend-api/bin/
 /backend-api/obj/
 
-# (optionnel) ignore aussi tous les bin/obj partout
+# ignore tous les autres bin/ et obj/ partout
 **/bin/
 **/obj/
