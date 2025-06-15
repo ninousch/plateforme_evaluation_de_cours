@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursFeedback.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250612003102_InitIdentity")]
-    partial class InitIdentity
+    [Migration("20250615063324_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,10 +67,6 @@ namespace CoursFeedback.API.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Prenom")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

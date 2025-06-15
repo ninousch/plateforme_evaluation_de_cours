@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CoursFeedback.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitIdentity : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,7 +32,6 @@ namespace CoursFeedback.API.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Nom = table.Column<string>(type: "TEXT", nullable: false),
                     Prenom = table.Column<string>(type: "TEXT", nullable: false),
-                    Role = table.Column<string>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
