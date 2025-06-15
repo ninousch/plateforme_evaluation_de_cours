@@ -10,5 +10,6 @@ namespace CourseFeedbackAPI.Data
             : base(options)
         {
         }
+        public DbSet<Course> Courses { get; set; }
     }
 }
