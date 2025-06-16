@@ -3,6 +3,7 @@ using System;
 using CourseFeedbackAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursFeedback.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250615204820_AddFeedbackSession")]
+    partial class AddFeedbackSession
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
@@ -40,59 +43,6 @@ namespace CoursFeedback.API.Migrations
                     b.HasIndex("EnseignantId");
 
                     b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("CourseFeedbackAPI.Models.Enrollment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Enrollments");
-                });
-
-            modelBuilder.Entity("CourseFeedbackAPI.Models.Feedback", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Commentaire")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FeedbackSessionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Note")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("FeedbackSessionId");
-
-                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("CourseFeedbackAPI.Models.FeedbackSession", b =>
@@ -333,44 +283,6 @@ namespace CoursFeedback.API.Migrations
                         .IsRequired();
 
                     b.Navigation("Enseignant");
-                });
-
-            modelBuilder.Entity("CourseFeedbackAPI.Models.Enrollment", b =>
-                {
-                    b.HasOne("CourseFeedbackAPI.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CourseFeedbackAPI.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CourseFeedbackAPI.Models.Feedback", b =>
-                {
-                    b.HasOne("CourseFeedbackAPI.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CourseFeedbackAPI.Models.FeedbackSession", "FeedbackSession")
-                        .WithMany()
-                        .HasForeignKey("FeedbackSessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("FeedbackSession");
                 });
 
             modelBuilder.Entity("CourseFeedbackAPI.Models.FeedbackSession", b =>
