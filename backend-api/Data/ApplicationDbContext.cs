@@ -15,5 +15,7 @@ namespace CourseFeedbackAPI.Data
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<FeedbackSession> FeedbackSessions { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+
+      
     }
 }

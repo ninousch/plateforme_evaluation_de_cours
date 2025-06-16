@@ -42,6 +42,7 @@ namespace CoursFeedback.API.Migrations
                     b.ToTable("Courses");
                 });
 
+
             modelBuilder.Entity("CourseFeedbackAPI.Models.Enrollment", b =>
                 {
                     b.Property<int>("Id")
@@ -119,6 +120,7 @@ namespace CoursFeedback.API.Migrations
 
                     b.ToTable("FeedbackSessions");
                 });
+
 
             modelBuilder.Entity("CourseFeedbackAPI.Models.User", b =>
                 {
@@ -334,6 +336,7 @@ namespace CoursFeedback.API.Migrations
 
                     b.Navigation("Enseignant");
                 });
+
 
             modelBuilder.Entity("CourseFeedbackAPI.Models.Enrollment", b =>
                 {
