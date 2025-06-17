@@ -9,5 +9,7 @@ namespace CourseFeedbackAPI.Models
 
         // Optionnel : navigation property
         public User? Enseignant { get; set; }
+
+        public ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     }
 }
