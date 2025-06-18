@@ -1,0 +1,35 @@
+@model Frontend.Models.Cours  <!-- La page attend un objet Cours -->
+
+@{
+    ViewData["Title"] = "Modifier un cours"; // Titre de la page
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- FORMULAIRE pour modifier un cours existant -->
+<form asp-action="Edit" method="post">
+
+    <!-- ID caché du cours (obligatoire pour la mise à jour) -->
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Champ pour modifier le titre -->
+    <div class="form-group">
+        <label asp-for="Titre" class="form-label">Titre du cours</label>
+        <input asp-for="Titre" class="form-control" />
+    </div>
+
+    <!-- Champ pour modifier la description -->
+    <div class="form-group mt-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <!-- Bouton pour valider les modifications -->
+    <button type="submit" class="btn btn-success mt-4">Mettre à jour</button>
+</form>
+
+<!-- Affichage d'un message d'erreur si la mise à jour échoue -->
+@if (ViewBag.Erreur != null)
+{
+<div class="alert alert-danger mt-3">@ViewBag.Erreur</div>
+}

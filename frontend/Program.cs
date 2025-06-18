@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddHttpClient();//Utilisé dans les appels a l'API backend
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,5 +22,10 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
-
+app.UseRouting(); //Active le système de routage 
+//Configuration des routes pour le controlleur MVC
+app.UseStaticFiles();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Utilisateurs}/{action=Index}/{id?}");
 app.Run();

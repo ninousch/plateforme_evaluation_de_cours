@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\frontend",
+    "\\frontend\\Models",
+    "\\frontend\\Views",
+    "\\frontend\\Views\\Cours",
+    "\\frontend\\Views\\Feedback",
+    "\\frontend\\Views\\Statut",
+    "\\frontend\\wwwroot",
+    "\\frontend\\wwwroot\\js",
+    "\\frontend\\wwwroot\\lib"
+  ],
+  "SelectedNode": "\\frontend\\Views\\Statut\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

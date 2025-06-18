@@ -1,0 +1,32 @@
+@model Frontend.Models.Cours  <!-- La vue reçoit un objet de type "Cours" -->
+
+@{
+    ViewData["Title"] = "Ajouter un cours";  // Le titre affiché en haut de la page
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Formulaire html pour créer un nouveau cours -->
+<form asp-action="Create" method="post">
+    <!-- Envoie les données à l'action POST "Create" du contrôleur -->
+    <!-- Champ pour le titre du cours -->
+    <div class="form-group">
+        <label asp-for="Titre" class="form-label">Titre du cours</label>
+        <input asp-for="Titre" class="form-control" />
+    </div>
+
+    <!-- Champ pour la description -->
+    <div class="form-group mt-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    </div>
+
+    <!-- Bouton pour envoyer le formulaire -->
+    <button type="submit" class="btn btn-primary mt-4">Ajouter</button>
+</form>
+
+<!-- Affiche un message d’erreur si quelque chose s’est mal passé -->
+@if (ViewBag.Erreur != null)
+{
+<div class="alert alert-danger mt-3">@ViewBag.Erreur</div>
+}

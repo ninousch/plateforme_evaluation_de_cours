@@ -1,0 +1,47 @@
+@model List<Frontend.Models.StatutFeedback>
+    <!-- La vue reçoit une liste de statuts -->
+
+    @{
+    ViewData["Title"] = "Statut des sessions de feedback";
+    }
+
+    <h2 class="mb-4">@ViewData["Title"]</h2>
+
+    <!-- Tableau des sessions de feedback -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cours</th>
+                <th>Date</th>
+                <th>Total Étudiants</th>
+                <th>Réponses reçues</th>
+                <th>Étudiants ayant répondu</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var statut in Model)
+        {
+            <tr>
+                <td>@statut.CoursTitre</td>
+                <td>@statut.DateSession.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@statut.NombreTotalEtudiants</td>
+                <td>@statut.NombreFeedbacksRecus</td>
+                <td>
+                    @if (statut.NomsEtudiantsAyantRepondu != null && statut.NomsEtudiantsAyantRepondu.Any())
+                    {
+                    <ul>
+                        @foreach (var nom in statut.NomsEtudiantsAyantRepondu)
+                            {
+                        <li>@nom</li>
+                            }
+                    </ul>
+                    }
+                    else
+                    {
+                    <span class="text-muted">Aucune réponse</span>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>

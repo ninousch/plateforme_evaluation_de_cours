@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mLopozgLBg8=",
+  "dgSpecHash": "zpGTTGwclPA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\backend-api\\CoursFeedback.API.csproj",
+  "projectFilePath": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\backend-api\\CoursFeedback.API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+    "C:\\Users\\akuet\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
+    "C:\\Users\\akuet\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
   ],
   "logs": []
 }

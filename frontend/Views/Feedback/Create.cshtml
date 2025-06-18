@@ -1,0 +1,44 @@
+@model Frontend.Models.SessionFeedback  <!-- Le formulaire utilise le modèle SessionFeedback -->
+
+@{
+    ViewData["Title"] = "Créer une session de feedback";
+    var coursList = ViewBag.Cours as List<Frontend.Models.Cours>;
+    var etudiantsList = ViewBag.Etudiants as List<Frontend.Models.Utilisateur>;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Formulaire de création -->
+<form asp-action="Create" method="post">
+
+    <!-- Sélection du cours -->
+    <div class="form-group">
+        <label for="CoursId">Cours concerné</label>
+        <select asp-for="CoursId" class="form-control" asp-items="@(new SelectList(coursList, "Id", "Titre"))">
+            <option value="">-- Choisir un cours --</option>
+        </select>
+    </div>
+
+    <!-- Sélection multiple des étudiants -->
+    <div class="form-group mt-3">
+        <label for="EtudiantsIds">Étudiants participants</label>
+        <select asp-for="EtudiantsIds" class="form-control" multiple size="5"
+                asp-items="@(new MultiSelectList(etudiantsList, "Id", "Nom"))">
+        </select>
+    </div>
+
+    <!-- Sélection de la date -->
+    <div class="form-group mt-3">
+        <label asp-for="Date">Date de la session</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" />
+    </div>
+
+    <!-- Bouton d'envoi -->
+    <button type="submit" class="btn btn-primary mt-4">Créer la session</button>
+</form>
+
+<!-- Message d'erreur si besoin -->
+@if (ViewBag.Erreur != null)
+{
+<div class="alert alert-danger mt-3">@ViewBag.Erreur</div>
+}

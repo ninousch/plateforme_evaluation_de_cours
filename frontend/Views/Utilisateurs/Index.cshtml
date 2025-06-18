@@ -1,0 +1,35 @@
+<!--Declare que cette page attend une liste d'objets utilisateurs-->
+@model List<Frontend.Models.Utilisateur>
+
+
+    @{
+     <!--Titre de la page -->
+    ViewData["Title"] = "Liste des utilisateurs";
+    }
+
+    <h2>@ViewData["Title"]</h2>
+
+    <!-- Création d'un tableau HTML avec en-tètes-->
+    <table class = "table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--Boucle qui parcourt chaque 
+                    utilisateur recu depuis le controlleur-->
+                @foreach (var utilisateur in Model)
+                {
+                    <tr>
+                        <td>@utilisateur.Nom</td>   <!--Affiche le nom -->
+                        <td>@utilisateur.Email</td> <!--Affiche l'Email'-->
+                        <td>@utilisateur.Role</td>  <!-- Affiche le role-->
+                    </tr>
+                }
+            </tbody>
+    </table>

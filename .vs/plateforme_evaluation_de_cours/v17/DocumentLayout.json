@@ -1,0 +1,241 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Statut\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Views\\Statut\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\StatutController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Controllers\\StatutController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\StatutFeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Models\\StatutFeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Feedback\\Create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Views\\Feedback\\Create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\FeedbackController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Controllers\\FeedbackController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\SessionFeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Models\\SessionFeedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Views\\Cours\\Edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Views\\Cours\\Create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\CoursController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Controllers\\CoursController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Utilisateurs\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Views\\Utilisateurs\\Index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\UtilisateursController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Controllers\\UtilisateursController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Utilisateurs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Models\\Utilisateurs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Cours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\Models\\Cours.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Statut\\Index.cshtml",
+              "RelativeDocumentMoniker": "frontend\\Views\\Statut\\Index.cshtml",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Statut\\Index.cshtml",
+              "RelativeToolTip": "frontend\\Views\\Statut\\Index.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T16:56:20.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StatutController.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\StatutController.cs",
+              "RelativeDocumentMoniker": "frontend\\Controllers\\StatutController.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\StatutController.cs",
+              "RelativeToolTip": "frontend\\Controllers\\StatutController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:55:03.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StatutFeedback.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\StatutFeedback.cs",
+              "RelativeDocumentMoniker": "frontend\\Models\\StatutFeedback.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\StatutFeedback.cs",
+              "RelativeToolTip": "frontend\\Models\\StatutFeedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:53:38.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Feedback\\Create.cshtml",
+              "RelativeDocumentMoniker": "frontend\\Views\\Feedback\\Create.cshtml",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Feedback\\Create.cshtml",
+              "RelativeToolTip": "frontend\\Views\\Feedback\\Create.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAAAYwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T16:51:55.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FeedbackController.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\FeedbackController.cs",
+              "RelativeDocumentMoniker": "frontend\\Controllers\\FeedbackController.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\FeedbackController.cs",
+              "RelativeToolTip": "frontend\\Controllers\\FeedbackController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAADwvzgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:49:35.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SessionFeedback.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\SessionFeedback.cs",
+              "RelativeDocumentMoniker": "frontend\\Models\\SessionFeedback.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\SessionFeedback.cs",
+              "RelativeToolTip": "frontend\\Models\\SessionFeedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:47:27.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Edit.cshtml",
+              "RelativeDocumentMoniker": "frontend\\Views\\Cours\\Edit.cshtml",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Edit.cshtml",
+              "RelativeToolTip": "frontend\\Views\\Cours\\Edit.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T16:41:56.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Create.cshtml",
+              "RelativeDocumentMoniker": "frontend\\Views\\Cours\\Create.cshtml",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Cours\\Create.cshtml",
+              "RelativeToolTip": "frontend\\Views\\Cours\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T16:40:51.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CoursController.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\CoursController.cs",
+              "RelativeDocumentMoniker": "frontend\\Controllers\\CoursController.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\CoursController.cs",
+              "RelativeToolTip": "frontend\\Controllers\\CoursController.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAABIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:17:43.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Cours.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Cours.cs",
+              "RelativeDocumentMoniker": "frontend\\Models\\Cours.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Cours.cs",
+              "RelativeToolTip": "frontend\\Models\\Cours.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:12:43.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Utilisateurs.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Utilisateurs.cs",
+              "RelativeDocumentMoniker": "frontend\\Models\\Utilisateurs.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Models\\Utilisateurs.cs",
+              "RelativeToolTip": "frontend\\Models\\Utilisateurs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T19:02:56.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UtilisateursController.cs",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\UtilisateursController.cs",
+              "RelativeDocumentMoniker": "frontend\\Controllers\\UtilisateursController.cs",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Controllers\\UtilisateursController.cs",
+              "RelativeToolTip": "frontend\\Controllers\\UtilisateursController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T21:09:11.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Utilisateurs\\Index.cshtml",
+              "RelativeDocumentMoniker": "frontend\\Views\\Utilisateurs\\Index.cshtml",
+              "ToolTip": "D:\\Esgis\\L3_2024-2025\\C#\\plateforme_evaluation_de_cours\\frontend\\Views\\Utilisateurs\\Index.cshtml",
+              "RelativeToolTip": "frontend\\Views\\Utilisateurs\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-16T21:08:51.061Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
