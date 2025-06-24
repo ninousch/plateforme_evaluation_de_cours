@@ -1,0 +1,158 @@
+@page
+@model frontend.Pages.Admin.StatsModel
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "Statistiques administrateur";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+else
+{
+    <section>
+        <h2>Statistiques générales</h2>
+        <div class="stats-grid">
+            <div class="stat-card"><strong>👤 Utilisateurs</strong> @Model.Stats.TotalUtilisateurs</div>
+            <div class="stat-card"><strong>🎓 Étudiants</strong> @Model.Stats.TotalEtudiants</div>
+            <div class="stat-card"><strong>👨‍🏫 Enseignants</strong> @Model.Stats.TotalEnseignants</div>
+            <div class="stat-card"><strong>📚 Cours</strong> @Model.Stats.TotalCours</div>
+            <div class="stat-card"><strong>📅 Sessions</strong> @Model.Stats.TotalSessions</div>
+            <div class="stat-card"><strong>💬 Feedbacks</strong> @Model.Stats.TotalFeedbacks</div>
+            <div class="stat-card"><strong>⭐ Moyenne globale</strong> @Model.Stats.MoyenneGlobale.ToString("F2")</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Statistiques par enseignant</h2>
+        @if (Model.Stats.Enseignants.Count == 0)
+        {
+            <p>Aucun feedback enregistré pour les enseignants.</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Enseignant</th>
+                        <th>Moyenne des notes</th>
+                        <th>Nombre de feedbacks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ens in Model.Stats.Enseignants)
+                    {
+                        <tr>
+                            <td>@ens.EnseignantNom</td>
+                            <td>@ens.Moyenne.ToString("F2")</td>
+                            <td>@ens.FeedbackCount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+
+    <section>
+        <h2>Statistiques par cours</h2>
+        @if (Model.Stats.CoursStats.Count == 0)
+        {
+            <p>Aucun cours trouvé.</p>
+        }
+        else
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Cours</th>
+                        <th>Enseignant</th>
+                        <th>Moyenne des notes</th>
+                        <th>Nombre de feedbacks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cours in Model.Stats.CoursStats)
+                    {
+                        <tr>
+                            <td>@cours.TitreCours</td>
+                            <td>@cours.NomCompletEnseignant</td>
+                            <td>@cours.MoyenneNotes.ToString("F2")</td>
+                            <td>@cours.NbFeedbacks</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h3>Graphique des moyennes par cours</h3>
+            <canvas id="coursChart" style="max-width: 800px; height: 400px;"></canvas>
+        }
+    </section>
+}
+
+<style>
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .stat-card {
+        background: #f3f4f6;
+        padding: 1rem;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 600;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    table {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+</style>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    // Préparer les données du graphique
+    const labels = @Html.Raw(JsonSerializer.Serialize(Model.Stats.CoursStats.Select(c => c.TitreCours)));
+    const data = @Html.Raw(JsonSerializer.Serialize(Model.Stats.CoursStats.Select(c => c.MoyenneNotes)));
+
+    const ctx = document.getElementById('coursChart').getContext('2d');
+    const coursChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Moyenne des notes par cours',
+                data: data,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    suggestedMin: 0,
+                    suggestedMax: 5
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ctx.parsed.y.toFixed(2)
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+}

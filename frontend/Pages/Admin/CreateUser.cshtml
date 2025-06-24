@@ -1,0 +1,128 @@
+@page
+
+@model frontend.Pages.Admin.CreateUserModel
+@{
+    ViewData["Title"] = "Créer un utilisateur";
+}
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        font-size: 26px;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #34495e;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #3498db;
+        outline: none;
+    }
+
+    .btn-submit {
+        background-color: #27ae60;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .btn-submit:hover {
+        background-color: #219150;
+    }
+
+    .success-message {
+        color: green;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .text-red-500 {
+        color: red;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="form-container">
+    <h2>👤 Créer un utilisateur</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="User.Nom">Nom</label>
+            <input asp-for="User.Nom" />
+            <span asp-validation-for="User.Nom" class="text-red-500"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Prenom">Prénom</label>
+            <input asp-for="User.Prenom" />
+            <span asp-validation-for="User.Prenom" class="text-red-500"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Email">Email</label>
+            <input asp-for="User.Email" type="email" />
+            <span asp-validation-for="User.Email" class="text-red-500"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Password">Mot de passe</label>
+            <input asp-for="User.Password" type="password" />
+            <span asp-validation-for="User.Password" class="text-red-500"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Role">Rôle</label>
+            <select asp-for="User.Role">
+                <option value="">-- Sélectionner un rôle --</option>
+                <option value="Etudiant">Étudiant</option>
+                <option value="Enseignant">Enseignant</option>
+                <option value="Admin">Administrateur</option>
+            </select>
+            <span asp-validation-for="User.Role" class="text-red-500"></span>
+        </div>
+
+        <button type="submit" class="btn-submit"> Créer l'utilisateur</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <p class="success-message">@Model.Message</p>
+    }
+</div>

@@ -1,0 +1,13 @@
+
+@page
+@model MesCoursModel
+@{
+    ViewData["Title"] = "Mes cours";
+}
+<h2>Mes cours</h2>
+<ul>
+@foreach (var cours in Model.CoursInscrits)
+{
+    <li>@cours</li>
+}
+</ul>

@@ -1,0 +1,153 @@
+@page
+@model frontend.Pages.Auth.RegisterModel
+@{
+    ViewData["Title"] = "Inscription";
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .validation-message {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inscription</h2>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger">@Model.ErrorMessage</div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+        {
+            <div class="alert alert-success">@Model.SuccessMessage</div>
+        }
+
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-message"></div>
+
+            <div>
+                <label asp-for="RegisterDto.Nom">Nom</label>
+                <input asp-for="RegisterDto.Nom" />
+                <span asp-validation-for="RegisterDto.Nom" class="validation-message"></span>
+            </div>
+
+            <div>
+                <label asp-for="RegisterDto.Prenom">Prénom</label>
+                <input asp-for="RegisterDto.Prenom" />
+                <span asp-validation-for="RegisterDto.Prenom" class="validation-message"></span>
+            </div>
+
+            <div>
+                <label asp-for="RegisterDto.Email">Email</label>
+                <input asp-for="RegisterDto.Email" type="email" />
+                <span asp-validation-for="RegisterDto.Email" class="validation-message"></span>
+            </div>
+
+            <div>
+                <label asp-for="RegisterDto.Password">Mot de passe</label>
+                <input asp-for="RegisterDto.Password" type="password" />
+                <span asp-validation-for="RegisterDto.Password" class="validation-message"></span>
+            </div>
+
+            <div>
+                <label asp-for="RegisterDto.Role">Rôle</label>
+                <select asp-for="RegisterDto.Role">
+                    <option value="">-- Sélectionner un rôle --</option>
+                    <option value="Etudiant">Etudiant</option>
+                    <option value="Enseignant">Enseignant</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <span asp-validation-for="RegisterDto.Role" class="validation-message"></span>
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+
+    @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+    }
+</body>
+</html>

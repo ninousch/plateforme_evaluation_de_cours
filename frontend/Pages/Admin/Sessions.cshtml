@@ -1,0 +1,129 @@
+@page
+@model frontend.Pages.Admin.SessionsModel
+@{
+    ViewData["Title"] = "Gestion des Sessions";
+}
+
+<style>
+    h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    form {
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="text"],
+    input[type="datetime-local"] {
+        border: 1px solid #D1D5DB;
+        padding: 0.25rem 0.5rem;
+        margin-right: 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    button {
+        padding: 0.25rem 0.75rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    .btn-ajouter {
+        background-color: #10B981; /* green-500 */
+        color: white;
+    }
+
+    .btn-ajouter:hover {
+        background-color: #059669;
+    }
+
+    .btn-supprimer {
+        background-color: #EF4444; /* red-500 */
+        color: white;
+    }
+
+    .btn-supprimer:hover {
+        background-color: #DC2626;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #E5E7EB;
+    }
+
+    thead {
+        background-color: #F3F4F6; /* gray-100 */
+    }
+
+    th,
+    td {
+        padding: 0.5rem 1rem;
+        border-top: 1px solid #E5E7EB;
+        text-align: left;
+    }
+
+    td form {
+        display: inline;
+    }
+</style>
+
+<h2>📅 Liste des Sessions</h2>
+
+@if (!Model.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in Model.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success" style="color: #059669; background-color: #d1fae5; padding: 10px; border-radius: 5px;">
+        @TempData["Message"]
+    </div>
+}
+
+<form method="post">
+    <label for="Nom">Nom</label>
+    <input id="Nom" name="Nom" placeholder="Nom de la session" type="text" value="@Model.Nom" required />
+
+    <label for="DateDebut">Date Début</label>
+    <input id="DateDebut" name="DateDebut" type="datetime-local" value="@(Model.DateDebut.ToString("yyyy-MM-ddTHH:mm"))" required />
+
+    <label for="DateFin">Date Fin</label>
+    <input id="DateFin" name="DateFin" type="datetime-local" value="@(Model.DateFin.ToString("yyyy-MM-ddTHH:mm"))" required />
+
+    <button type="submit" class="btn-ajouter">Ajouter</button>
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>  <!-- Ou Titre, selon ce que tu préfères afficher -->
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model.Sessions)
+        {
+            <tr>
+                <td>@s.Nom</td> <!-- Le champ Titre du DTO, qui contient le Nom en backend -->
+                <td>@s.DateDebut.ToString("g")</td>
+                <td>@s.DateFin.ToString("g")</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@s.Id" onsubmit="return confirm('Confirmer la suppression de cette session ?');">
+                        <button type="submit" class="btn-supprimer">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj": {}
+    "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\frontend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj": {
+    "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\frontend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\frontend.csproj",
         "projectName": "frontend",
-        "projectPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj",
+        "projectPath": "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\frontend.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,30 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.12.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

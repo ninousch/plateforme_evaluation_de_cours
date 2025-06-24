@@ -1,0 +1,228 @@
+@page
+@model frontend.Pages.Admin.CoursesModel
+@{
+    ViewData["Title"] = "Gestion des Cours";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        padding: 40px;
+        max-width: 1000px;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #222;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #f9f9f9;
+    }
+
+    .input-field, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-edit:hover {
+        background-color: #e0a800;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background-color: #c82333;
+    }
+
+    .btn-save {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-save:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-cancel {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-cancel:hover {
+        background-color: #5a6268;
+    }
+
+    .message {
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+    }
+
+    .error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .form-section {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #fefefe;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="container">
+    <h1>📚 Liste des Cours</h1>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="message error">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    @if (Model.Cours == null || !Model.Cours.Any())
+    {
+        <p style="text-align: center; color: gray; font-style: italic;">Aucun cours disponible pour le moment.</p>
+    }
+    else
+    {
+        <form method="post">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Enseignant</th>
+                        <th style="text-align:center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Cours.Count; i++)
+                    {
+                        var cours = Model.Cours[i];
+                        <tr id="row-@i">
+                            <td>
+                                <input type="hidden" name="CoursList[@i].Id" value="@cours.Id" />
+                                <input name="CoursList[@i].Titre" class="input-field" value="@cours.Titre" readonly />
+                            </td>
+                            <td>
+                                <input name="CoursList[@i].Description" class="input-field" value="@cours.Description" readonly />
+                            </td>
+                            <td>
+                                <input name="CoursList[@i].EnseignantNom" class="input-field" value="@cours.EnseignantNom (ID: @cours.EnseignantId)" readonly />
+                            </td>
+                            <td class="actions">
+                                <button type="submit" formaction="?handler=Edit&id=@cours.Id" class="btn btn-edit">✏️ Modifier</button>
+                                <button type="submit" formaction="?handler=Delete&id=@cours.Id" class="btn btn-delete" onclick="return confirm('Confirmer la suppression de ce cours ?');">🗑️ Supprimer</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    }
+
+    @if (Model.IsEditing && Model.CourseToEdit != null)
+    {
+        <div class="form-section">
+            <h2>Modifier le cours</h2>
+
+            <form method="post" asp-page-handler="Update">
+                <input type="hidden" asp-for="CourseToEdit.Id" />
+
+                <div class="mb-3">
+                    <label>Titre</label>
+                    <input asp-for="CourseToEdit.Titre" class="input-field" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Description</label>
+                    <textarea asp-for="CourseToEdit.Description" class="input-field"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label>Enseignant</label>
+                    <select asp-for="CourseToEdit.EnseignantId" class="input-field">
+                        <option value="">-- Sélectionner un enseignant --</option>
+                        @foreach (var ens in Model.Enseignants)
+                        {
+                            <option value="@ens.Id" selected="@(Model.CourseToEdit.EnseignantId == ens.Id)">
+                                @ens.NomComplet
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn btn-save">✅ Mettre à jour</button>
+                    <button type="submit" asp-page-handler="CancelEdit" class="btn btn-cancel">❌ Annuler</button>
+                </div>
+            </form>
+        </div>
+    }
+</div>

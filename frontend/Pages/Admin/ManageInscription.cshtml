@@ -1,0 +1,88 @@
+@page
+@model frontend.Pages.Admin.ManageInscriptionsModel
+@{
+    ViewData["Title"] = "Gérer les Inscriptions";
+}
+
+<h1 class="text-2xl font-bold mb-6">📌 Gérer les Inscriptions des Étudiants aux Cours</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="error-message">@Model.ErrorMessage</div>
+}
+
+<form method="post" asp-page-handler="Inscrire">
+    <div class="form-section">
+        <label for="EtudiantId">👤 Étudiant :</label>
+        <select asp-for="EtudiantId" class="form-control" required>
+            <option value="">-- Sélectionner un étudiant --</option>
+            @foreach (var etu in Model.Etudiants)
+            {
+                <option value="@etu.Id">@etu.Nom @etu.Prenom (@etu.Email)</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-section">
+        <label for="CoursId">📚 Cours :</label>
+        <select asp-for="CoursId" class="form-control" required>
+            <option value="">-- Sélectionner un cours --</option>
+            @foreach (var c in Model.TousLesCours)
+            {
+                <option value="@c.Id">@c.Titre (Enseignant : @c.Enseignant?.Nom @c.Enseignant?.Prenom)</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">✅ Inscrire</button>
+</form>
+
+<hr class="my-6" />
+
+<h2 class="text-xl font-semibold mb-2">📄 Liste des Cours et Étudiants inscrits</h2>
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Cours</th>
+            <th>Étudiants inscrits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cours in Model.TousLesCours)
+        {
+            <tr>
+                <td><strong>@cours.Titre</strong></td>
+                <td>
+                    @if (cours.Inscriptions?.Any() ?? false)
+                    {
+                        <ul>
+                            @foreach (var ins in cours.Inscriptions)
+                            {
+                                <li>@ins.Etudiant?.Nom @ins.Etudiant?.Prenom (@ins.Etudiant?.Email)</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <em>Aucun étudiant inscrit</em>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .form-section {
+        margin-bottom: 1rem;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;

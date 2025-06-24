@@ -1,0 +1,153 @@
+@page
+@model frontend.Pages.Student.EvaluateModel
+@{
+    ViewData["Title"] = "Évaluer un cours";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #343a40;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #495057;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .btn {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 18px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto 0 auto;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .alert {
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .session-info {
+        background-color: #e2e3e5;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .session-info strong {
+        color: #000;
+    }
+</style>
+
+<div class="container">
+    <h2>Évaluer un cours</h2>
+
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success" style="background-color:#d1fae5; color:#065f46; padding:10px; border-radius:5px; margin-bottom:20px;">
+        @TempData["Message"]
+    </div>
+}
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger">@Model.ErrorMessage</div>
+    }
+
+    @if (Model.SessionActive != null)
+    {
+        <div class="session-info">
+            <strong>Session active :</strong> @Model.SessionActive.Nom <br />
+            <strong>Période :</strong> @Model.SessionActive.DateDebut.ToString("dd/MM/yyyy") -
+            @Model.SessionActive.DateFin.ToString("dd/MM/yyyy")
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            Aucune session active pour le moment. Vous ne pouvez pas évaluer de cours.
+        </div>
+    }
+
+    @if (Model.SessionActive != null)
+    {
+        <form method="post">
+            <div class="form-group">
+                <label for="cours">Cours :</label>
+                <select asp-for="Feedback.CoursId" class="form-control">
+                    <option value="">-- Choisissez un cours --</option>
+                    @foreach (var cours in Model.CoursList)
+                    {
+                        <option value="@cours.Id">@cours.Titre</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Note (1 à 5) :</label>
+                <input asp-for="Feedback.Note" type="number" min="1" max="5" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Commentaire :</label>
+                <textarea asp-for="Feedback.Commentaire" class="form-control" rows="4"></textarea>
+            </div>
+
+            <input type="hidden" asp-for="Feedback.SessionId" />
+
+            <button type="submit" class="btn">Soumettre</button>
+        </form>
+    }
+</div>

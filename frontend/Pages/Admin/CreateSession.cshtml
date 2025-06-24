@@ -1,0 +1,119 @@
+@page
+@model frontend.Pages.Admin.CreateSessionModel
+@{
+    ViewData["Title"] = "Créer une session";
+}
+
+<style>
+    .form-container {
+        padding: 1.5rem;
+        max-width: 640px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #4338CA;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.25rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+        border-color: #6366F1;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+    }
+
+    .form-textarea {
+        resize: vertical;
+    }
+
+    .validation-error {
+        font-size: 0.875rem;
+        color: #DC2626;
+    }
+
+    .btn-submit {
+        background-color: #4F46E5;
+        color: white;
+        padding: 0.5rem 1.25rem;
+        border: none;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+        background-color: #4338CA;
+    }
+
+    .success-message {
+        margin-top: 1rem;
+        color: #059669;
+        font-weight: 500;
+    }
+</style>
+
+<div class="form-container">
+    <h2>📅 Créer une nouvelle session</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Session.Nom" class="form-label">Nom de la session</label>
+            <input asp-for="Session.Nom" class="form-input" />
+            <span asp-validation-for="Session.Nom" class="validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Session.Description" class="form-label">Description</label>
+            <textarea asp-for="Session.Description" rows="4" class="form-textarea"></textarea>
+            <span asp-validation-for="Session.Description" class="validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Session.DateDebut" class="form-label">Date de début</label>
+            <input asp-for="Session.DateDebut" type="datetime-local" class="form-input" />
+            <span asp-validation-for="Session.DateDebut" class="validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Session.DateFin" class="form-label">Date de fin</label>
+            <input asp-for="Session.DateFin" type="datetime-local" class="form-input" />
+            <span asp-validation-for="Session.DateFin" class="validation-error"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Créer la session</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <p class="success-message">@Model.Message</p>
+    }
+</div>
