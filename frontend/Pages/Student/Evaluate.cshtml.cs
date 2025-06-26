@@ -21,8 +21,7 @@ namespace frontend.Pages.Student
         public FeedbackDto Feedback { get; set; } = new();
 
         public List<CourseDto> CoursList { get; set; } = new();
-        public Session? SessionActive { get; set; } // ✅ Ajout
-
+        public Session? SessionActive { get; set; }
         public string ErrorMessage { get; set; } = "";
 
         public class CourseDto
@@ -43,11 +42,23 @@ namespace frontend.Pages.Student
 
             [Required]
             public int SessionId { get; set; }
+
+            // Champs supplémentaires à évaluer
+            public string? Connaissances { get; set; }
+            public string? Clarte { get; set; }
+            public string? Organisation { get; set; }
+            public string? Interet { get; set; }
+            public string? FeedbackNotes { get; set; }
+            public string? Equite { get; set; }
+            public string? Accessibilite { get; set; }
+            public string? Respect { get; set; }
+            public string? Pertinence { get; set; }
+            public string? Impact { get; set; }
+            public string? CommentaireFinal { get; set; }
         }
 
         public async Task OnGetAsync()
         {
-            // Récupération de l'utilisateur connecté
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
@@ -55,7 +66,6 @@ namespace frontend.Pages.Student
                 return;
             }
 
-            // Récupérer la session active
             SessionActive = await _context.Sessions
                 .Where(s => s.DateDebut <= DateTime.Now && s.DateFin >= DateTime.Now)
                 .OrderByDescending(s => s.DateDebut)
@@ -67,31 +77,26 @@ namespace frontend.Pages.Student
                 return;
             }
 
-            // Récupérer les cours auxquels l'étudiant est inscrit
             var coursInscrits = await _context.Inscriptions
                 .Where(i => i.EtudiantId == userId)
                 .Select(i => i.CoursId)
                 .ToListAsync();
 
-            // Récupérer les cours non évalués de l'étudiant dans la session active
             var coursEvaluésIds = await _context.Feedbacks
                 .Where(f => f.EtudiantId == userId && f.SessionId == SessionActive.Id)
                 .Select(f => f.CoursId)
                 .ToListAsync();
 
-            // Sélectionner les cours auxquels l'étudiant est inscrit et qui ne sont pas encore évalués
             CoursList = await _context.Cours
                 .Where(c => coursInscrits.Contains(c.Id) && !coursEvaluésIds.Contains(c.Id))
                 .Select(c => new CourseDto { Id = c.Id, Titre = c.Titre })
                 .ToListAsync();
 
-            // Pré-remplir SessionId dans le formulaire
             Feedback.SessionId = SessionActive.Id;
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            // Recharge la liste des cours pour la page
             CoursList = await _context.Cours
                 .Select(c => new CourseDto { Id = c.Id, Titre = c.Titre })
                 .ToListAsync();
@@ -100,12 +105,14 @@ namespace frontend.Pages.Student
             {
                 return Page();
             }
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 ErrorMessage = "Vous devez être connecté pour soumettre une évaluation.";
                 return Page();
             }
+
             var session = await _context.Sessions.FindAsync(Feedback.SessionId);
             if (session == null || session.DateDebut > DateTime.Now || session.DateFin < DateTime.Now)
             {
@@ -113,7 +120,6 @@ namespace frontend.Pages.Student
                 return Page();
             }
 
-            // Vérifier si l'étudiant est inscrit à ce cours
             var estInscrit = await _context.Inscriptions
                 .AnyAsync(i => i.EtudiantId == userId && i.CoursId == Feedback.CoursId);
 
@@ -123,7 +129,6 @@ namespace frontend.Pages.Student
                 return Page();
             }
 
-            // Vérifier si le cours a déjà été évalué par l'étudiant
             var existeDejaEvaluation = await _context.Feedbacks
                 .AnyAsync(f => f.EtudiantId == userId && f.CoursId == Feedback.CoursId && f.SessionId == Feedback.SessionId);
 
@@ -136,20 +141,30 @@ namespace frontend.Pages.Student
             var feedback = new Feedback
             {
                 Note = Feedback.Note,
-                Commentaire = Feedback.Commentaire ?? string.Empty,
+                Commentaire = Feedback.Commentaire ?? "",
                 CoursId = Feedback.CoursId,
                 SessionId = Feedback.SessionId,
-                DateCreation = DateTime.UtcNow,
                 EtudiantId = userId,
+                DateCreation = DateTime.UtcNow,
+
+                // Champs supplémentaires
+                Connaissances = Feedback.Connaissances,
+                Clarte = Feedback.Clarte,
+                Organisation = Feedback.Organisation,
+                Interet = Feedback.Interet,
+                FeedbackNotes = Feedback.FeedbackNotes,
+                Equite = Feedback.Equite,
+                Accessibilite = Feedback.Accessibilite,
+                Respect = Feedback.Respect,
+                Pertinence = Feedback.Pertinence,
+                Impact = Feedback.Impact,
+                CommentaireFinal = Feedback.CommentaireFinal
             };
 
             _context.Feedbacks.Add(feedback);
             await _context.SaveChangesAsync();
 
-            // Stocke le message dans TempData
             TempData["Message"] = "✅ Votre évaluation a été enregistrée avec succès.";
-
-            // Recharge la page pour afficher le message
             return RedirectToPage();
         }
     }

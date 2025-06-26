@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BDoMxhDSp5k=",
+  "dgSpecHash": "rpJWK9xDndA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Downloads\\plateforme\\frontend\\frontend.csproj",
+  "projectFilePath": "C:\\Users\\USER\\OneDrive - ESGIS\\Documents\\Groupe3\\plateforme_evaluation_de_cours\\frontend\\frontend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.6\\microsoft.aspnetcore.cryptography.internal.9.0.6.nupkg.sha512",

@@ -255,8 +255,20 @@ namespace frontend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Accessibilite")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Clarte")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Commentaire")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CommentaireFinal")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Connaissances")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("CoursId")
@@ -268,12 +280,33 @@ namespace frontend.Migrations
                     b.Property<DateTime>("DateSoumission")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Equite")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("EtudiantId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FeedbackNotes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Impact")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Interet")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Note")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Organisation")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Pertinence")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Respect")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("SessionId")
                         .HasColumnType("INTEGER");

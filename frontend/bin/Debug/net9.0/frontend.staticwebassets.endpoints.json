@@ -897,6 +897,88 @@
       ]
     },
     {
+      "Route": "images/esgis.webp",
+      "AssetFile": "images/esgis.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81778"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u3Zc+IvhcNe3lsrgrUMzVDSBsV1LIUs38PqFvj0gSAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Jun 2025 13:42:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-u3Zc+IvhcNe3lsrgrUMzVDSBsV1LIUs38PqFvj0gSAA="
+        }
+      ]
+    },
+    {
+      "Route": "images/esgis.x5jxi2t51f.webp",
+      "AssetFile": "images/esgis.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81778"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u3Zc+IvhcNe3lsrgrUMzVDSBsV1LIUs38PqFvj0gSAA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Jun 2025 13:42:41 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "x5jxi2t51f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u3Zc+IvhcNe3lsrgrUMzVDSBsV1LIUs38PqFvj0gSAA="
+        },
+        {
+          "Name": "label",
+          "Value": "images/esgis.webp"
+        }
+      ]
+    },
+    {
       "Route": "js/chart.min.81laiq5ifx.js",
       "AssetFile": "js/chart.min.js.gz",
       "Selectors": [

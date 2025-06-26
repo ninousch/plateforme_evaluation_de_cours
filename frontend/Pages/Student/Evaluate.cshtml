@@ -6,75 +6,85 @@
 
 <style>
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
+        background-color: #f9fafc;
+        font-family: 'Segoe UI', sans-serif;
     }
 
-    .container {
-        max-width: 600px;
-        margin: 40px auto;
+    form {
+        background: linear-gradient(to bottom right, #fff, #f0f4f8);
         padding: 30px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        max-width: 850px;
+        margin: 40px auto;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
         text-align: center;
-        color: #343a40;
-        margin-bottom: 25px;
-    }
-
-    .form-group {
+        color: #2d3436;
+        font-size: 2em;
         margin-bottom: 20px;
     }
 
     label {
-        font-weight: bold;
-        margin-bottom: 5px;
+        font-weight: 600;
+        margin-top: 15px;
         display: block;
-        color: #495057;
+        color: #34495e;
     }
 
-    .form-control {
+    select, textarea, input[type="number"] {
         width: 100%;
         padding: 10px;
-        font-size: 1rem;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
+        font-size: 1em;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        background-color: #fdfdfd;
     }
 
-    textarea.form-control {
-        resize: vertical;
-    }
-
-    .btn {
-        background-color: #007bff;
+    button[type="submit"] {
+        background-color: #d63031;
         color: white;
-        padding: 10px 18px;
-        font-size: 1rem;
         border: none;
-        border-radius: 4px;
+        padding: 14px;
+        font-size: 1em;
+        font-weight: 600;
+        border-radius: 10px;
         cursor: pointer;
-        display: block;
-        margin: 20px auto 0 auto;
+        width: 100%;
+        transition: all 0.3s ease;
     }
 
-    .btn:hover {
-        background-color: #0056b3;
+    button[type="submit"]:hover {
+        background-color: #c0392b;
+        transform: scale(1.02);
     }
 
-    .alert {
+    .section-title {
+        font-size: 1.3em;
+        margin-top: 25px;
+        color: #2c3e50;
+        border-left: 4px solid #d63031;
+        padding-left: 10px;
+    }
+
+    .alert-success {
+        background-color: #d1fae5;
+        color: #065f46;
         padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 4px;
+        border-radius: 5px;
+        margin-bottom: 20px;
     }
 
     .alert-danger {
         background-color: #f8d7da;
         color: #721c24;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
     }
 
     .session-info {
@@ -90,64 +100,155 @@
     }
 </style>
 
-<div class="container">
-    <h2>Évaluer un cours</h2>
+<!-- ...entête et styles inchangés... -->
 
+<h2>Évaluer un cours</h2>
 
 @if (TempData["Message"] != null)
 {
-    <div class="alert alert-success" style="background-color:#d1fae5; color:#065f46; padding:10px; border-radius:5px; margin-bottom:20px;">
-        @TempData["Message"]
-    </div>
+    <div class="alert-success">@TempData["Message"]</div>
 }
 
-    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-    {
-        <div class="alert alert-danger">@Model.ErrorMessage</div>
-    }
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert-danger">@Model.ErrorMessage</div>
+}
 
-    @if (Model.SessionActive != null)
-    {
-        <div class="session-info">
-            <strong>Session active :</strong> @Model.SessionActive.Nom <br />
-            <strong>Période :</strong> @Model.SessionActive.DateDebut.ToString("dd/MM/yyyy") -
-            @Model.SessionActive.DateFin.ToString("dd/MM/yyyy")
-        </div>
-    }
-    else
-    {
-        <div class="alert alert-danger">
-            Aucune session active pour le moment. Vous ne pouvez pas évaluer de cours.
-        </div>
-    }
+@if (Model.SessionActive != null)
+{
+    <div class="session-info">
+        <strong>Session active :</strong> @Model.SessionActive.Nom <br />
+        <strong>Période :</strong> @Model.SessionActive.DateDebut.ToString("dd/MM/yyyy") -
+        @Model.SessionActive.DateFin.ToString("dd/MM/yyyy")
+    </div>
 
-    @if (Model.SessionActive != null)
-    {
-        <form method="post">
-            <div class="form-group">
-                <label for="cours">Cours :</label>
-                <select asp-for="Feedback.CoursId" class="form-control">
-                    <option value="">-- Choisissez un cours --</option>
-                    @foreach (var cours in Model.CoursList)
-                    {
-                        <option value="@cours.Id">@cours.Titre</option>
-                    }
-                </select>
-            </div>
+    <form method="post">
+        <div class="section-title">Informations de base</div>
 
-            <div class="form-group">
-                <label>Note (1 à 5) :</label>
-                <input asp-for="Feedback.Note" type="number" min="1" max="5" class="form-control" />
-            </div>
+        <label>Cours :</label>
+        <select asp-for="Feedback.CoursId">
+            <option value="">-- Choisissez un cours --</option>
+            @foreach (var cours in Model.CoursList)
+            {
+                <option value="@cours.Id">@cours.Titre</option>
+            }
+        </select>
 
-            <div class="form-group">
-                <label>Commentaire :</label>
-                <textarea asp-for="Feedback.Commentaire" class="form-control" rows="4"></textarea>
-            </div>
+        <input type="hidden" asp-for="Feedback.SessionId" />
 
-            <input type="hidden" asp-for="Feedback.SessionId" />
+        <div class="section-title">1. Le prof et le cours</div>
+        <!-- Les champs sur connaissances, clarté, organisation, intérêt -->
+        <label>Il sait de quoi il parle ?</label>
+        <select asp-for="Feedback.Connaissances">
+            <option>Carrément, un pur génie.</option>
+            <option>Ça va, il se débrouille.</option>
+            <option>Moyennement.</option>
+            <option>Bof, il galère un peu.</option>
+            <option>Non, il plane complètement.</option>
+        </select>
 
-            <button type="submit" class="btn">Soumettre</button>
-        </form>
-    }
-</div>
+        <label>Il explique clairement ?</label>
+        <select asp-for="Feedback.Clarte">
+            <option>Crystal clair, même les yeux fermés.</option>
+            <option>Assez clair, faut juste suivre.</option>
+            <option>Des fois ça va, des fois non.</option>
+            <option>Souvent confus, je décroche.</option>
+            <option>Un charabia total.</option>
+        </select>
+
+        <label>Le cours est bien organisé ?</label>
+        <select asp-for="Feedback.Organisation">
+            <option>Top, tout est logique.</option>
+            <option>Plutôt bien.</option>
+            <option>Un peu le bazar parfois.</option>
+            <option>Franchement brouillon.</option>
+            <option>Un chaos absolu.</option>
+        </select>
+
+        <label>Il arrive à nous captiver ?</label>
+        <select asp-for="Feedback.Interet">
+            <option>Super intéressant, je suis accro.</option>
+            <option>Généralement captivant.</option>
+            <option>Ça dépend des jours.</option>
+            <option>Plutôt ennuyeux.</option>
+            <option>Une invitation au dodo.</option>
+        </select>
+
+        <div class="section-title">2. Devoirs & Notes</div>
+        <label>Tu comprends ses retours ?</label>
+        <select asp-for="Feedback.FeedbackNotes">
+            <option>Totalement, explications nickel.</option>
+            <option>Oui, la plupart du temps.</option>
+            <option>Parfois un peu flou.</option>
+            <option>Rarement, je pige rien.</option>
+            <option>Jamais, c’est un mystère.</option>
+        </select>
+
+        <label>Équité dans les notes ?</label>
+        <select asp-for="Feedback.Equite">
+            <option>Ultra juste.</option>
+            <option>Plutôt juste.</option>
+            <option>Quelques doutes parfois.</option>
+            <option>J’ai des soupçons.</option>
+            <option>Totalement injuste.</option>
+        </select>
+
+        <div class="section-title">3. Relation avec le prof</div>
+        <label>Accessible en cas de besoin ?</label>
+        <select asp-for="Feedback.Accessibilite">
+            <option>Toujours dispo, super cool.</option>
+            <option>Facilement joignable.</option>
+            <option>Faut le traquer un peu.</option>
+            <option>Très difficilement.</option>
+            <option>Fantôme complet.</option>
+        </select>
+
+        <label>Il te respecte ?</label>
+        <select asp-for="Feedback.Respect">
+            <option>Toujours respectueux.</option>
+            <option>Généralement correct.</option>
+            <option>Parfois limite.</option>
+            <option>Souvent condescendant.</option>
+            <option>Nous prend pour des débiles.</option>
+        </select>
+
+        <div class="section-title">4. Supports de cours</div>
+        <label>Les documents sont utiles ?</label>
+        <select asp-for="Feedback.Pertinence">
+            <option>Hyper utiles, au top.</option>
+            <option>Globalement pratiques.</option>
+            <option>Certains oui, d'autres non.</option>
+            <option>Pas ouf.</option>
+            <option>Perte de temps totale.</option>
+        </select>
+
+        <div class="section-title">5. Verdict final</div>
+        <label>As-tu appris quelque chose ?</label>
+        <select asp-for="Feedback.Impact">
+            <option>Énormément, merci prof !</option>
+            <option>Oui, pas mal de trucs.</option>
+            <option>Quelques éléments.</option>
+            <option>Pas grand-chose.</option>
+            <option>Rien du tout.</option>
+        </select>
+
+        <label>Ton avis sincère à l’administration :</label>
+        <textarea asp-for="Feedback.CommentaireFinal" placeholder="Balance ton ressenti, sans filtre..." rows="4"></textarea>
+
+        <div class="section-title">6. Note globale</div>
+
+        <label>Note générale (1 à 5) :</label>
+        <input asp-for="Feedback.Note" type="number" min="1" max="5" />
+
+        <label>Commentaire général :</label>
+        <textarea asp-for="Feedback.Commentaire" rows="4"></textarea>
+
+        <button type="submit">Envoyer l’évaluation 📨</button>
+    </form>
+}
+else
+{
+    <div class="alert-danger">
+        Aucune session active pour le moment. Vous ne pouvez pas évaluer de cours.
+    </div>
+}
